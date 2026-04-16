@@ -8,7 +8,7 @@ export interface Venue {
   subcategory?: string;
   city: City;
   neighborhood: string;
-  address: string;
+  address?: string;
   coordinates: [number, number]; // [lng, lat]
   tags: string[];
   audience: Audience[];
@@ -16,10 +16,12 @@ export interface Venue {
   hours?: string;
   websiteUrl?: string;
   instagramUrl?: string;
+  facebookUrl?: string;
   priceLevel?: 1 | 2 | 3 | 4;
   featured: boolean;
   mapPriority: number;
   sourceSection?: string;
+  status?: "open" | "closed" | "active" | "irregular" | "hiatus" | "opening-soon";
   openNow?: boolean;
   image?: string;
 }
