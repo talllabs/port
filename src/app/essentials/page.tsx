@@ -50,12 +50,12 @@ export default function EssentialsPage() {
           <h2 className="font-semibold text-text-primary mb-4">Quick reference</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
             {[
-              { label: "Metro closes", value: "~01:00 (use Uber after)" },
-              { label: "Clubs start", value: "01:00–02:00 (really)" },
-              { label: "HIV testing", value: "GAT Lisboa & CheckpointLX (free)" },
+              { label: "Metro closes", value: "~00:45 (use Uber/Bolt after)" },
+              { label: "Clubs get busy", value: "From ~01:30" },
+              { label: "HIV testing", value: "Checkpoint LX & GAT Intendente (free)" },
               { label: "Emergency", value: "112" },
-              { label: "Marriage equality", value: "Since 2010" },
-              { label: "Beer in supermarket", value: "€0.80–1.50" },
+              { label: "Legal drinking age", value: "18" },
+              { label: "Street-drinking rules", value: "Restricted 23:00–08:00 (Lisbon, since Feb 2026)" },
             ].map((item) => (
               <div key={item.label} className="flex justify-between gap-4">
                 <span className="text-text-muted">{item.label}</span>

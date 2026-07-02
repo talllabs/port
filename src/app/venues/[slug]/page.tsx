@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { MapPin, Clock, Globe, ExternalLink, ArrowLeft, Tag } from "lucide-react";
+import { MapPin, Clock, Globe, ExternalLink, ArrowLeft, Tag, Mail } from "lucide-react";
 import { getVenueBySlug, venues } from "@/data/venues";
 import { getCategoryLabel, getCategoryColor, getAudienceLabel } from "@/lib/search";
+import { CONTACT_EMAIL } from "@/lib/config";
 import type { Metadata } from "next";
 
 interface Props {
@@ -154,7 +155,7 @@ export default function VenuePage({ params }: Props) {
                 <div className="flex items-start gap-2.5 text-text-secondary">
                   <MapPin className="w-4 h-4 text-text-muted mt-0.5 flex-shrink-0" />
                   <div>
-                    <div>{venue.address}</div>
+                    {venue.address && <div>{venue.address}</div>}
                     <div className="text-text-muted text-xs">{venue.neighborhood}, {venue.city}</div>
                   </div>
                 </div>
@@ -200,17 +201,36 @@ export default function VenuePage({ params }: Props) {
                     <ExternalLink className="w-3 h-3 ml-auto opacity-50" />
                   </a>
                 )}
-                <a
-                  href={`https://maps.google.com?q=${encodeURIComponent(venue.address)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-text-secondary hover:text-primary transition-colors"
-                >
-                  <MapPin className="w-4 h-4" />
-                  Open in Maps
-                  <ExternalLink className="w-3 h-3 ml-auto opacity-50" />
-                </a>
+                {venue.address && (
+                  <a
+                    href={`https://maps.google.com?q=${encodeURIComponent(venue.address ?? "")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-text-secondary hover:text-primary transition-colors"
+                  >
+                    <MapPin className="w-4 h-4" />
+                    Open in Maps
+                    <ExternalLink className="w-3 h-3 ml-auto opacity-50" />
+                  </a>
+                )}
               </div>
+            </div>
+
+            {/* Suggest an edit */}
+            <div className="rounded-2xl bg-surface-2 border border-border p-5 space-y-2">
+              <h3 className="font-semibold text-text-primary text-sm">Run this place?</h3>
+              <p className="text-text-muted text-xs leading-relaxed">
+                If any of these details are out of date, or you&apos;d like to update this listing, let us know.
+              </p>
+              <a
+                href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+                  `Update for ${venue.name}`
+                )}`}
+                className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors pt-1"
+              >
+                <Mail className="w-4 h-4" />
+                Suggest an edit
+              </a>
             </div>
 
             {/* Nearby */}
