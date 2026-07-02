@@ -215,6 +215,28 @@ export default function MapPage() {
             <p className="text-text-muted text-xs mt-0.5">
               {lisbonVenues.length} venues · Tap a pin to see details
             </p>
+            <div className="mt-3 flex flex-col gap-1.5">
+              <a
+                href="https://shorturl.at/fBJ19"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-xs text-primary hover:text-primary/80 transition-colors"
+              >
+                <MapPin className="w-3 h-3" />
+                Open Alex&apos;s full Map of LGBTQ Lisbon on Google Maps
+                <ExternalLink className="w-3 h-3 opacity-60" />
+              </a>
+              <a
+                href="https://shorturl.at/iMYiN"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-xs text-primary hover:text-primary/80 transition-colors"
+              >
+                <MapPin className="w-3 h-3" />
+                Open Alex&apos;s Map of LGBTQ Portugal on Google Maps
+                <ExternalLink className="w-3 h-3 opacity-60" />
+              </a>
+            </div>
           </div>
 
           {/* Selected venue detail */}
